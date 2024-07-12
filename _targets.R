@@ -10,7 +10,7 @@ library(here)
 
 # Set target options:
 tar_option_set(
-  packages = c("here") # Packages that your targets need for their tasks.
+  packages = c("here", "tidyverse") # Packages that your targets need for their tasks.
   # format = "qs", # Optionally set the default storage format. qs is fast.
   #
   # Pipelines that take a long time to run may benefit from
@@ -54,5 +54,10 @@ list(
   tar_target(
     data_raw,
     read_data("38417-0001-Data.rda")
+  ),
+  
+  tar_target(
+    data_filtered,
+    filter_select_data(data_raw)
   )
 )

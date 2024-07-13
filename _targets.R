@@ -65,5 +65,10 @@ list(
   tar_target(
     table,
     make_table(data)
+  ),
+  
+  tar_target(
+    plot,
+    make_plot(data)
   )
 )

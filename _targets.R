@@ -10,7 +10,7 @@ library(here)
 
 # Set target options:
 tar_option_set(
-  packages = c("here", "tidyverse") # Packages that your targets need for their tasks.
+  packages = c("here", "tidyverse", "rempsyc", "flextable") # Packages that your targets need for their tasks.
   # format = "qs", # Optionally set the default storage format. qs is fast.
   #
   # Pipelines that take a long time to run may benefit from
@@ -47,6 +47,7 @@ tar_option_set(
 
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source(here("R", "functions_get_data.R"))
+tar_source(here("R", "functions_viz.R"))
 # tar_source("other_functions.R") # Source other scripts as needed.
 
 
@@ -59,5 +60,10 @@ list(
   tar_target(
     data,
     clean_data(data_raw)
+  ),
+  
+  tar_target(
+    table,
+    make_table(data)
   )
 )

@@ -3,4 +3,7 @@ project:
   output-dir: docs
   
 website:
-  title: "title"
+  title: "Website for the NCHAT Analysis"
+  navbar:
+    left:
+      - Analysis.html

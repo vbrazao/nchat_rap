@@ -57,7 +57,7 @@ list(
   ),
   
   tar_target(
-    data_filtered,
-    filter_select_data(data_raw)
+    data,
+    clean_data(data_raw)
   )
 )

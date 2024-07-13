@@ -12,7 +12,10 @@ make_table <- function(data){
       names_prefix = "Prevents Access."
     ) |> 
     dplyr::mutate(
-      gender = dplyr::if_else(is.na(gender), true = "Missing", false = gender)
+      gender = dplyr::if_else(is.na(gender), true = "NA", false = gender)
+    ) |> 
+    dplyr::rename(
+      Gender = gender
     ) |> 
     rempsyc::nice_table(
       separate.header = TRUE

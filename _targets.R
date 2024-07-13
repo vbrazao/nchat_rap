@@ -6,6 +6,7 @@
 # Load packages required to define the pipeline:
 library(targets)
 library(here)
+library(tarchetypes)
 # library(tarchetypes) # Load other packages as needed.
 
 # Set target options:
@@ -82,5 +83,10 @@ list(
   tar_target(
     summary,
     gtsummary::tbl_regression(model, exp = TRUE)
+  ),
+  
+  tar_render(
+    Analysis,
+    "Analysis.Rmd"
   )
 )

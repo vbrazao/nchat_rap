@@ -29,21 +29,21 @@ clean_data <- function(data){
       # questionnaire does) and there are only 28 people classified as 
       # "transgender"
       gender = dplyr::case_when(
-        stringr::str_detect(D2, "(1)") ~ "male",
-        stringr::str_detect(D2, "(2)") ~ "female",
+        stringr::str_detect(D2, "(1)") ~ "Male",
+        stringr::str_detect(D2, "(2)") ~ "Female",
         .default = NA
       ) |> 
         forcats::as_factor(),
       fin_abuse = dplyr::case_when(
-        stringr::str_detect(Q129D, "(1)") ~ "never",
-        stringr::str_detect(Q129D, "(2)") ~ "rarely",
-        stringr::str_detect(Q129D, "(3)") ~ "sometimes",
-        stringr::str_detect(Q129D, "(4)") ~ "often",
-        stringr::str_detect(Q129D, "(5)") ~ "very often",
+        stringr::str_detect(Q129D, "(1)") ~ "Never",
+        stringr::str_detect(Q129D, "(2)") ~ "Rarely",
+        stringr::str_detect(Q129D, "(3)") ~ "Sometimes",
+        stringr::str_detect(Q129D, "(4)") ~ "Often",
+        stringr::str_detect(Q129D, "(5)") ~ "Very often",
       ) |> 
         forcats::as_factor() |> 
         forcats::fct_relevel(
-          "never", "rarely", "sometimes", "often", "very often"
+          "Never", "Rarely", "Sometimes", "Often", "Very often"
         ), 
       # discard columns not created in this mutate() call
       .keep = "none"

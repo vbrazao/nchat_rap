@@ -9,7 +9,7 @@ make_table <- function(data){
     tidyr::pivot_wider(
       names_from = fin_abuse,
       values_from = n,
-      names_prefix = "Prevents Access."
+      names_prefix = "Partner Prevents Access."
     ) |> 
     dplyr::mutate(
       gender = dplyr::if_else(is.na(gender), true = "NA", false = gender)

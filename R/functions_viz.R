@@ -22,3 +22,22 @@ make_table <- function(data){
     )
 }
 
+# create plot of fin_abuse by gender
+
+make_plot <- function(data){
+  data |>
+    dplyr::count(fin_abuse, gender) |> 
+    ggplot(aes(x = gender, y = fin_abuse, fill = n)) +
+    geom_tile(color = "lightgrey", linewidth = 1) +
+    scale_fill_gradient(low = "white", high = "purple", name = "Frequency") +
+    labs(x = "Gender", y = "Partner Prevents Access") + 
+    theme_light() +
+    theme(
+      panel.grid = element_blank(),
+      axis.ticks = element_blank(),
+      panel.background = element_rect(fill = "lightgrey")
+    )
+}
+
+
+

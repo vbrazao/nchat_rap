@@ -1,0 +1,57 @@
+---
+title: "Analysis"
+author: "Vasco"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+
+```{r}
+library(targets)
+library(ordinal)
+library(rempsyc)
+library(flextable)
+library(gtsummary)
+```
+
+I used NCHAT data to investigate differences in financial abuse between gender. Using only primary participants, I looked at item Q129D, which asked how often the person's partner "Kept [them] from having access to a job, money, or financial resources."
+
+The following table breaks down responses given by cis men and women, as the data for transgender people did not indicate a gender ("transgender", the only option to analyse, is not a gender). 
+
+```{r}
+tar_load(table)
+
+table
+```
+
+We can see that the overwhelming majority of participants of both genders indicate never being subject to financial abuse. The following plot make this stark similarity more obvious:
+
+```{r}
+tar_load(plot)
+
+plot
+```
+
+To formally analyze differences, I also ran an ordinal model predicting responses, whose coefficients are summarized next:
+
+```{r}
+tar_load(summary)
+
+summary
+```
+
+We find no statistical evidence for a difference between men and women (OR = 0.83, 95% CI [0.59, 1.16], p = .3).
+
+Below, the default model summary provided by R.
+
+```{r}
+tar_load(model)
+
+summary(model)
+```
+
